@@ -18,6 +18,7 @@ func Read(filename string) (*rsa.PublicKey, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer func() { _ = open.Close() }()
 	return Decode(open)
 }
 
